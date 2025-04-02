@@ -32,7 +32,7 @@ jobs:
         
     - name: Run SPARQL monitor
       run: |
-        cd monitor
+        cd oc_monitor
         python -m main
 
     - name: Create website from HTML reports
