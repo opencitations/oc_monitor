@@ -1,8 +1,8 @@
 {
     "endpoint": "https://test.opencitations.net/meta/sparql",
     "collection": "OpenCitations Meta",
-    "datetime": "31/03/2025, 03:31:55",
-    "running_time": 321.2010586261749,
+    "datetime": "31/03/2025, 03:37:52",
+    "running_time": 319.95139241218567,
     "config_fp": "meta_monitor_config.json",
     "monitoring_results": [
         {
@@ -11,7 +11,7 @@
             "query": "PREFIX datacite: <http://purl.org/spar/datacite/>\nPREFIX literal: <http://www.essepuntato.it/2010/06/literalreification/>\nPREFIX fabio: <http://purl.org/spar/fabio/>\n\nASK {\n    ?br1 datacite:hasIdentifier/literal:hasLiteralValue ?lit ;\n    a fabio:Expression .\n    ?br2 datacite:hasIdentifier/literal:hasLiteralValue ?lit ;\n    a fabio:Expression .\n    FILTER(?br1 != ?br2)\n}",
             "run": {
                 "got_result": true,
-                "running_time": 2.5658740997314453,
+                "running_time": 2.4245307445526123,
                 "error": null
             },
             "passed": false
@@ -22,7 +22,7 @@
             "query": "PREFIX datacite: <http://purl.org/spar/datacite/>\nPREFIX fabio: <http://purl.org/spar/fabio/>\n\nASK {\n  {\n    SELECT (COUNT(DISTINCT ?br) AS ?count)\n    WHERE {\n      ?br a fabio:Expression .\n      ?br datacite:hasIdentifier ?id1 .\n      ?br datacite:hasIdentifier ?id2 .\n      ?id1 datacite:usesIdentifierScheme ?scheme .\n      ?id2 datacite:usesIdentifierScheme ?scheme .\n      FILTER (?id1 != ?id2)\n      FILTER (?scheme != datacite:issn)\n    }\n  }\n  FILTER(?count > 10000)\n}",
             "run": {
                 "got_result": false,
-                "running_time": 285.27039790153503,
+                "running_time": 283.7329032421112,
                 "error": "Remote end closed connection without response"
             }
         },
@@ -32,7 +32,7 @@
             "query": "PREFIX datacite: <http://purl.org/spar/datacite/>\nPREFIX literal: <http://www.essepuntato.it/2010/06/literalreification/>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\n\nASK {\n    ?agent1 datacite:hasIdentifier/literal:hasLiteralValue ?lit ;\n    a foaf:Agent .\n    ?agent2 datacite:hasIdentifier/literal:hasLiteralValue ?lit ;\n    a foaf:Agent .\n    FILTER(?agent1 != ?agent2)\n}",
             "run": {
                 "got_result": true,
-                "running_time": 0.5735609531402588,
+                "running_time": 0.48201489448547363,
                 "error": null
             },
             "passed": false
@@ -43,7 +43,7 @@
             "query": "PREFIX frbr: <http://purl.org/vocab/frbr/core#>\nPREFIX fabio: <http://purl.org/spar/fabio/>\n\nASK {\n  {\n    SELECT (COUNT(DISTINCT ?br) as ?count) {\n      ?br frbr:partOf ?venue;\n        a fabio:Expression;\n        frbr:embodiment ?man1, ?man2.\n      FILTER(?man1 != ?man2)\n      FILTER NOT EXISTS {\n        ?br frbr:partOf ?otherVenue .\n      FILTER(?venue != ?otherVenue)\n      }\n    }\n  }\n  FILTER(?count > 15)\n}",
             "run": {
                 "got_result": true,
-                "running_time": 12.797747611999512,
+                "running_time": 13.138357877731323,
                 "error": null
             },
             "passed": true
@@ -54,7 +54,7 @@
             "query": "PREFIX frbr: <http://purl.org/vocab/frbr/core#>\nPREFIX fabio: <http://purl.org/spar/fabio/>\n\nASK {\n  {\n    SELECT (COUNT(DISTINCT ?br) AS ?count) {\n      ?br frbr:partOf ?venue1 ;\n        frbr:partOf ?venue2 . \n      # ?venue1 and ?venue2 have the same type (any type)\n      ?venue1 a ?type .\n      ?venue2 a ?type .\n      FILTER(?venue1 != ?venue2)\n      FILTER(?type != fabio:Expression)  # Exclude fabio:Expression type\n    }\n  }\n  FILTER (?count > 1000)\n}",
             "run": {
                 "got_result": true,
-                "running_time": 19.992722511291504,
+                "running_time": 20.17275047302246,
                 "error": null
             },
             "passed": false

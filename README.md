@@ -71,7 +71,7 @@ The JSON output can be converted into an HTML page by using the `generate_html()
 To run the process with the default configuration:
 
 ```bash
-cd monitor
+cd oc_monitor
 python -m main
 ```
 
@@ -119,7 +119,7 @@ The script allows users to further customise the default behaviour of the softwa
 To run both monitors using default configurations and output paths:
 
 ```bash
-cd monitor
+cd oc_monitor
 python -m main
 ```
 
@@ -133,7 +133,7 @@ This will generate reports in:
 To run only the MetaMonitor and specify a custom configuration file:
 
 ```bash
-cd monitor
+cd oc_monitor
 python -m main --run meta --meta_config my_meta_config.json
 ```
 
@@ -142,7 +142,7 @@ python -m main --run meta --meta_config my_meta_config.json
 To run both monitors but specify a custom output base path:
 
 ```bash
-cd monitor
+cd oc_monitor
 python -m main --output_base_path /my/custom/path
 ```
 
@@ -156,7 +156,7 @@ The reports will be saved in:
 To run only the IndexMonitor and specify both the configuration file and a custom output path:
 
 ```bash
-cd monitor
+cd oc_monitor
 python -m main --run index --index_config custom_index_config.json --output_base_path custom_reports
 ```
 
