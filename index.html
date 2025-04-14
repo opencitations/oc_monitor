@@ -81,8 +81,8 @@
                 
             <p><strong>Collection:</strong> OpenCitations Meta</p>
             <p><strong>Endpoint:</strong> https://test.opencitations.net/meta/sparql</p>
-            <p><strong>Date and Time:</strong> 07/04/2025, 03:30:28</p>
-            <p><strong>Total Running Time:</strong> 321.127 seconds</p>
+            <p><strong>Date and Time:</strong> 14/04/2025, 03:33:00</p>
+            <p><strong>Total Running Time:</strong> 322.413 seconds</p>
         
             </div>
             <table>
@@ -97,35 +97,35 @@
 <td>duplicate_br</td>
 <td>There is at least one case of multiple fabio:Expression entities sharing the same ID value for any given scheme (e.g. the same DOI is linked to 2 separate journal articles, as in https://opencitations.net/meta/api/v1/metadata/omid:br/061103623233 and https://opencitations.net/meta/api/v1/metadata/omid:br/061602208852).</td>
 <td><span class="failed">Failed</span></td>
-<td>2.613</td>
+<td>2.893</td>
 <td><span class="null">-</span></td>
 </tr>
 <tr>
 <td>multiple_id_values</td>
 <td>There are more than 10,000 BRs that have 2 or more values for at least one of their supported ID schemes (e.g. 2 DOIs for a single journal article, as in https://opencitations.net/meta/api/v1/metadata/omid:br/06120410820).</td>
 <td><span class="null">-</span></td>
-<td>285.234</td>
+<td>285.871</td>
 <td><span class="error">Remote end closed connection without response</span></td>
 </tr>
 <tr>
 <td>duplicate_agent</td>
 <td>There is at least one case of multiple foaf:Agent entities sharing the same ID value for any given scheme (e.g. different authors have the same ORCID, as for the authors of https://opencitations.net/meta/api/v1/metadata/omid:br/061702782637).</td>
 <td><span class="failed">Failed</span></td>
-<td>0.715</td>
+<td>0.799</td>
 <td><span class="null">-</span></td>
 </tr>
 <tr>
 <td>multiple_manifestations</td>
 <td>There are more than 15 BRs that are embodied in multiple fabio:Manifestation entities (e.g. https://opencitations.net/meta/br/062503856318.html).</td>
 <td><span class="passed">Passed</span></td>
-<td>12.866</td>
+<td>12.732</td>
 <td><span class="null">-</span></td>
 </tr>
 <tr>
 <td>br_in_multiple_venues</td>
 <td>There are more than 1,000 BRs that (wrongly) appear to be contained in different venues (e.g. the journal article described at https://test.opencitations.net/meta/api/v1/metadata/omid:br/0603904064).</td>
 <td><span class="failed">Failed</span></td>
-<td>19.698</td>
+<td>20.118</td>
 <td><span class="null">-</span></td>
 </tr>
 </table>
@@ -137,8 +137,8 @@
                 
             <p><strong>Collection:</strong> OpenCitations Index</p>
             <p><strong>Endpoint:</strong> https://test.opencitations.net/index/sparql</p>
-            <p><strong>Date and Time:</strong> 07/04/2025, 03:35:49</p>
-            <p><strong>Total Running Time:</strong> 0.606 seconds</p>
+            <p><strong>Date and Time:</strong> 14/04/2025, 03:38:22</p>
+            <p><strong>Total Running Time:</strong> 0.659 seconds</p>
         
             </div>
             <table>
@@ -153,17 +153,17 @@
 <td>circular_citation</td>
 <td>The same entity appears as both citing and cited entity for the same Citation.</td>
 <td><span class="null">-</span></td>
-<td>0.606</td>
+<td>0.659</td>
 <td><span class="error">EndPointInternalError: The endpoint returned the HTTP status code 500. 
 
 Response:
-b'{\n    "exception": "Tried to allocate 17.2 GB, but only 12.7 GB were available. Clear the cache or allow more memory for QLever during startup",\n    "query": "PREFIX cito: <http: cito="" purl.org="" spar=""></http:>\\n\\nSELECT ?citation WHERE {\\n  ?citation a cito:Citation ;\\n    cito:hasCitingEntity ?entity ;\\n    cito:hasCitedEntity ?entity .\\n}\\nLIMIT 1",\n    "resultsize": 0,\n    "runtimeInformation": {\n        "cache_status": "computed",\n        "children": [\n            {\n                "cache_status": "computed",\n                "children": [\n                    {\n                        "cache_status": "computed",\n                        "children": [],\n                        "column_names": [\n                            "?citation",\n                            "?entity"\n                        ],\n                        "description": "IndexScan ?citation <http: cito="" hascitedentity="" purl.org="" spar=""> ?entity",\n                        "details": null,\n                        "estimated_column_multiplicities": [\n                            1.0000349283218384,\n                            27.20469093322754\n                        ],\n                        "estimated_operation_cost": 2155573307,\n                        "estimated_size": 2155573307,\n                        "estimated_total_cost": 2155573307,\n                        "operation_time": 7,\n                        "original_operation_time": 0,\n                        "original_total_time": 0,\n                        "result_cols": 2,\n                        "result_rows": 0,\n                        "status": "failed",\n                        "total_time": 7\n                    },\n                    {\n                        "cache_status": "computed",\n                        "children": [],\n                        "column_names": [\n                            "?citation",\n                            "?entity"\n                        ],\n                        "description": "IndexScan ?citation <http: cito="" hascitingentity="" purl.org="" spar=""> ?entity",\n                        "details": null,\n                        "estimated_column_multiplicities": [\n                            1.0000349283218384,\n                            28.174325942993164\n                        ],\n                        "estimated_operation_cost": 2155573307,\n                        "estimated_size": 2155573307,\n                        "estimated_total_cost": 2155573307,\n                        "operation_time": 0,\n                        "original_operation_time": 0,\n                        "original_total_time": 0,\n                        "result_cols": 2,\n                        "result_rows": 0,\n                        "status": "not started",\n                        "total_time": 0\n                    }\n                ],\n                "column_names": [\n                    "?citation",\n                    "?entity"\n                ],\n                "description": "MultiColumnJoin on ?entity ?citation ",\n                "details": null,\n                "estimated_column_multiplicities": [\n                    1.0000698566436768,\n                    27.20564079284668\n                ],\n                "estimated_operation_cost": 9389593219,\n                "estimated_size": 76513769,\n                "estimated_total_cost": 13700739833,\n                "operation_time": 1,\n                "original_operation_time": 0,\n                "original_total_time": 0,\n                "result_cols": 2,\n                "result_rows": 0,\n                "status": "failed because child failed",\n                "total_time": 8\n            },\n            {\n                "cache_status": "computed",\n                "children": [],\n                "column_names": [\n                    "?citation"\n                ],\n                "description": "IndexScan ?citation <http: 02="" 1999="" 22-rdf-syntax-ns#type="" www.w3.org=""> <http: citation="" cito="" purl.org="" spar="">",\n                "details": null,\n                "estimated_column_multiplicities": [\n                    1.0\n                ],\n                "estimated_operation_cost": 2155497918,\n                "estimated_size": 2155497918,\n                "estimated_total_cost": 2155497918,\n                "operation_time": 0,\n                "original_operation_time": 0,\n                "original_total_time": 0,\n                "result_cols": 1,\n                "result_rows": 0,\n                "status": "not started",\n                "total_time": 0\n            }\n        ],\n        "column_names": [\n            "?citation",\n            "?entity"\n        ],\n        "description": "Join on ?citation",\n        "details": null,\n        "estimated_column_multiplicities": [\n            1.0,\n            19.043949127197266\n        ],\n        "estimated_operation_cost": 2285571325,\n        "estimated_size": 53559638,\n        "estimated_total_cost": 18141809076,\n        "operation_time": 1,\n        "original_operation_time": 0,\n        "original_total_time": 0,\n        "result_cols": 2,\n        "result_rows": 0,\n        "status": "failed because child failed",\n        "total_time": 9\n    },\n    "status": "ERROR",\n    "time": {\n        "computeResult": 25,\n        "total": 25\n    }\n}'</http:></http:></http:></http:></span></td>
+b'{\n    "exception": "Tried to allocate 17.2 GB, but only 12.7 GB were available. Clear the cache or allow more memory for QLever during startup",\n    "query": "PREFIX cito: <http: cito="" purl.org="" spar=""></http:>\\n\\nSELECT ?citation WHERE {\\n  ?citation a cito:Citation ;\\n    cito:hasCitingEntity ?entity ;\\n    cito:hasCitedEntity ?entity .\\n}\\nLIMIT 1",\n    "resultsize": 0,\n    "runtimeInformation": {\n        "cache_status": "computed",\n        "children": [\n            {\n                "cache_status": "computed",\n                "children": [\n                    {\n                        "cache_status": "computed",\n                        "children": [],\n                        "column_names": [\n                            "?citation",\n                            "?entity"\n                        ],\n                        "description": "IndexScan ?citation <http: cito="" hascitedentity="" purl.org="" spar=""> ?entity",\n                        "details": null,\n                        "estimated_column_multiplicities": [\n                            1.0000349283218384,\n                            27.20469093322754\n                        ],\n                        "estimated_operation_cost": 2155573307,\n                        "estimated_size": 2155573307,\n                        "estimated_total_cost": 2155573307,\n                        "operation_time": 6,\n                        "original_operation_time": 0,\n                        "original_total_time": 0,\n                        "result_cols": 2,\n                        "result_rows": 0,\n                        "status": "failed",\n                        "total_time": 6\n                    },\n                    {\n                        "cache_status": "computed",\n                        "children": [],\n                        "column_names": [\n                            "?citation",\n                            "?entity"\n                        ],\n                        "description": "IndexScan ?citation <http: cito="" hascitingentity="" purl.org="" spar=""> ?entity",\n                        "details": null,\n                        "estimated_column_multiplicities": [\n                            1.0000349283218384,\n                            28.174325942993164\n                        ],\n                        "estimated_operation_cost": 2155573307,\n                        "estimated_size": 2155573307,\n                        "estimated_total_cost": 2155573307,\n                        "operation_time": 0,\n                        "original_operation_time": 0,\n                        "original_total_time": 0,\n                        "result_cols": 2,\n                        "result_rows": 0,\n                        "status": "not started",\n                        "total_time": 0\n                    }\n                ],\n                "column_names": [\n                    "?citation",\n                    "?entity"\n                ],\n                "description": "MultiColumnJoin on ?citation ?entity ",\n                "details": null,\n                "estimated_column_multiplicities": [\n                    1.0000698566436768,\n                    27.20564079284668\n                ],\n                "estimated_operation_cost": 9389593219,\n                "estimated_size": 76513769,\n                "estimated_total_cost": 13700739833,\n                "operation_time": 2,\n                "original_operation_time": 0,\n                "original_total_time": 0,\n                "result_cols": 2,\n                "result_rows": 0,\n                "status": "failed because child failed",\n                "total_time": 8\n            },\n            {\n                "cache_status": "computed",\n                "children": [],\n                "column_names": [\n                    "?citation"\n                ],\n                "description": "IndexScan ?citation <http: 02="" 1999="" 22-rdf-syntax-ns#type="" www.w3.org=""> <http: citation="" cito="" purl.org="" spar="">",\n                "details": null,\n                "estimated_column_multiplicities": [\n                    1.0\n                ],\n                "estimated_operation_cost": 2155497918,\n                "estimated_size": 2155497918,\n                "estimated_total_cost": 2155497918,\n                "operation_time": 0,\n                "original_operation_time": 0,\n                "original_total_time": 0,\n                "result_cols": 1,\n                "result_rows": 0,\n                "status": "not started",\n                "total_time": 0\n            }\n        ],\n        "column_names": [\n            "?citation",\n            "?entity"\n        ],\n        "description": "Join on ?citation",\n        "details": null,\n        "estimated_column_multiplicities": [\n            1.0,\n            19.043949127197266\n        ],\n        "estimated_operation_cost": 2285571325,\n        "estimated_size": 53559638,\n        "estimated_total_cost": 18141809076,\n        "operation_time": 0,\n        "original_operation_time": 0,\n        "original_total_time": 0,\n        "result_cols": 2,\n        "result_rows": 0,\n        "status": "failed because child failed",\n        "total_time": 8\n    },\n    "status": "ERROR",\n    "time": {\n        "computeResult": 27,\n        "total": 27\n    }\n}'</http:></http:></http:></http:></span></td>
 </tr>
 </table>
         </div>
 
         <div class="timestamp">
-            Last updated: 07/04/2025, 05:35:50
+            Last updated: 14/04/2025, 05:38:23
         </div>
     </div>
 </body>
