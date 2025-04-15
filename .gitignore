@@ -5,3 +5,7 @@ __pycache__
 
 #build package
 dist/
+
+# other
+tmp/
+**/tmp

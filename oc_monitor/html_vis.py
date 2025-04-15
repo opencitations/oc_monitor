@@ -66,11 +66,17 @@ class ReportVisualiser:
             else:
                 passed_status = f"<span class='null'>-</span>"
 
+            if entry.get('count') is not None:
+                count = f"{int(entry['count']):,}"  # the query expected a count as result, which can be a positive integer or zero
+            else:
+                count = '<span class="null">-</span>'  # either the query did not include a count or the query execution failed
+
             monitoring_results_rows += f"""
                 <tr>
                     <td>{entry['label']}</td>
                     <td>{entry['description']}</td>
                     <td>{passed_status}</td>
+                    <td>{count}</td>
                     <td>{round(entry['run']['running_time'], 3)}</td>
                     <td>{error_message}</td>
                 </tr>"""

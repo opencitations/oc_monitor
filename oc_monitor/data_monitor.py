@@ -69,16 +69,22 @@ class MetaMonitor:
                 label = issue['label']
                 query = issue['query']
                 descr = issue['description']
+                query_type = issue.get('query_type', '')
 
                 sparql.setQuery(query)
                 sparql.setReturnFormat(JSON)
                 try:
                     res_start = time.time()
                     response = sparql.query().convert()
-                    if "ASK" in query:
+                    if "ASK" in query or query_type == 'ask':
                         result_value = response['boolean']
                     else:
                         result_value = True if response['results']['bindings'] else False # 'bindings' list is empty if no results
+                    if query_type == 'count':
+                        count = [list(bind.values())[0]['value'] for bind in response['results']['bindings']][0]  # count query must be built so that it returns a signle integer
+                        result_value = bool(int(count))
+                    else:
+                        count = None
                     test_res = {
                         'label': label,
                         'description': descr,
@@ -92,6 +98,8 @@ class MetaMonitor:
                         test_res['passed']= False
                     else:
                         test_res['passed']= True
+                    test_res['count'] = count
+                    print(test_res, '\n\n')  # TODO: remove line
                     output_dict['monitoring_results'].append(test_res)
 
                 except Exception as e:
@@ -105,6 +113,7 @@ class MetaMonitor:
                             'error': str(e)}} # TODO: add other metadata about the error?
                     
                     output_dict['monitoring_results'].append(test_res)
+                    print('Esecuzione fallita:', response, '\n\n')  # TODO: remove line
                 finally:
                     continue # TODO: implement better error handling strategy?
         
@@ -182,16 +191,22 @@ class IndexMonitor:
                 label = issue['label']
                 query = issue['query']
                 descr = issue['description']
+                query_type = issue.get('query_type', '')
 
                 sparql.setQuery(query)
                 sparql.setReturnFormat(JSON)
                 try:
                     res_start = time.time()
                     response = sparql.query().convert()
-                    if "ASK" in query:
+                    if "ASK" in query or query_type == 'ask':
                         result_value = response['boolean']
                     else:
                         result_value = True if response['results']['bindings'] else False # 'bindings' list is empty if no results
+                    if query_type == 'count':
+                        count = response['results']['bindings'][0]['count']['value']
+                        result_value = bool(int(count))
+                    else:
+                        count = None
                     test_res = {
                         'label': label,
                         'description': descr,
@@ -205,6 +220,7 @@ class IndexMonitor:
                         test_res['passed']= False
                     else:
                         test_res['passed']= True
+                    test_res['count'] = count
                     output_dict['monitoring_results'].append(test_res)
 
                 except Exception as e:
