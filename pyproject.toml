@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "oc_monitor"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["eliarizzetto <elia.rizzetto@gmail.com>"]
 readme = "README.md"
