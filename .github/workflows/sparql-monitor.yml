@@ -10,7 +10,7 @@ on:
     paths-ignore:
       - 'monitor_results/**'
   schedule:
-    - cron: '0 3 1-7 * 1'  # Alle 3 AM del primo lunedì del mese
+    - cron: '0 3 * * 1'  # Alle 3 AM di ogni lunedì
 
 jobs:
   monitor:
