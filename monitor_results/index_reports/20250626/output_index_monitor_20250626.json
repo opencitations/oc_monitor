@@ -1,0 +1,19 @@
+{
+    "endpoint": "https://sparql.opencitations.net/index",
+    "collection": "OpenCitations Index",
+    "datetime": "26/06/2025, 13:20:22",
+    "running_time": 0.30356597900390625,
+    "config_fp": "index_monitor_config.json",
+    "monitoring_results": [
+        {
+            "label": "circular_citation",
+            "description": "The same entity appears as both citing and cited entity for the same Citation.",
+            "query": "PREFIX cito: <http://purl.org/spar/cito/>\n\nSELECT ?citation WHERE {\n  ?citation a cito:Citation ;\n    cito:hasCitingEntity ?entity ;\n    cito:hasCitedEntity ?entity .\n}\nLIMIT 1",
+            "run": {
+                "got_result": false,
+                "running_time": 0.3034539222717285,
+                "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)>"
+            }
+        }
+    ]
+}
