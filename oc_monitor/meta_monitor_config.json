@@ -1,5 +1,5 @@
 {
-    "endpoint": "https://test.opencitations.net/meta/sparql",
+    "endpoint": "https://sparql.opencitations.net/meta",
     "tests": [
         {
             "label": "duplicate_br",

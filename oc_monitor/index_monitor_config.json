@@ -1,5 +1,5 @@
 {
-    "endpoint": "https://test.opencitations.net/index/sparql",
+    "endpoint": "https://sparql.opencitations.net/index",
     "tests": [
         {
             "label": "circular_citation",
