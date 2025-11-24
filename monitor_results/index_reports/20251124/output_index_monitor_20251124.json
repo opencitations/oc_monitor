@@ -1,0 +1,19 @@
+{
+    "endpoint": "https://sparql.opencitations.net/index",
+    "collection": "OpenCitations Index",
+    "datetime": "24/11/2025, 03:55:34",
+    "running_time": 326.09804105758667,
+    "config_fp": "index_monitor_config.json",
+    "monitoring_results": [
+        {
+            "label": "circular_citation",
+            "description": "The same entity appears as both citing and cited entity for the same Citation.",
+            "query": "PREFIX cito: <http://purl.org/spar/cito/>\n\nSELECT ?citation WHERE {\n  ?citation a cito:Citation ;\n    cito:hasCitingEntity ?entity ;\n    cito:hasCitedEntity ?entity .\n}\nLIMIT 1",
+            "run": {
+                "got_result": false,
+                "running_time": 326.0978260040283,
+                "error": "HTTP Error 429: Too Many Requests"
+            }
+        }
+    ]
+}
