@@ -1,0 +1,21 @@
+{
+    "endpoint": "https://sparql.opencitations.net/index",
+    "collection": "OpenCitations Index",
+    "datetime": "29/12/2025, 04:08:42",
+    "running_time": 275.8929064273834,
+    "config_fp": "index_monitor_config.json",
+    "monitoring_results": [
+        {
+            "label": "circular_citation",
+            "description": "The same entity appears as both citing and cited entity for the same Citation.",
+            "query": "PREFIX cito: <http://purl.org/spar/cito/>\n\nSELECT ?citation WHERE {\n  ?citation a cito:Citation ;\n    cito:hasCitingEntity ?entity ;\n    cito:hasCitedEntity ?entity .\n}\nLIMIT 1",
+            "run": {
+                "got_result": true,
+                "running_time": 275.8928105831146,
+                "error": null
+            },
+            "passed": false,
+            "count": null
+        }
+    ]
+}
